@@ -1,16 +1,44 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// leccion 3
+using System.Reflection.Metadata.Ecma335;
+
+Client Pepe = new Client("Nicolas",541100000,"colon 800","nicolas@test.com",false);
+
+Console.WriteLine(Pepe);
 
 
-// ej N° 1
+Console.WriteLine(Pepe.FullName);
 
-Console.WriteLine("Introduce tu nombre: ");
-string nombre = Console.ReadLine();
-Console.WriteLine("Hello, " + nombre);
+Console.WriteLine(Pepe.Phone);
+Console.WriteLine(Pepe.Address);
+Console.WriteLine(Pepe.Email);
+Console.WriteLine(Pepe.NewClient);
 
 
-// ej N°2
+Client Pipi = Pepe with { FullName = "Bauti" };
+Console.WriteLine("===============*PIPI*====================");
+Console.WriteLine(Pipi);    
 
-var Hora = DateTime.Now;
+public struct Client
+{
+    public Client (string? fullName,int phone , string? address, string? email,bool newClient)
+    {
+        FullName = fullName;
+        Phone = phone;
+        Address = address;
+        Email = email;
+        NewClient = newClient;
 
-Console.WriteLine("Fecha y hora actual :" + Hora.ToString("F"));
+    }
+
+    public string FullName { get; set; }
+    public int Phone { get; set; }
+    public string Address { get; set; }
+    public string Email { get; set; }
+
+    public bool NewClient { get; set; }
+
+    public override string ToString() => $"Nombre Completo: {FullName} telefono:  {Phone} Direccion: {Address} Email:{Email} Cliente nuevo: {NewClient}";
+    
+
+}
 
